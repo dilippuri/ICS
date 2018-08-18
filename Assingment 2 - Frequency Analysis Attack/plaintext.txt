@@ -1,0 +1,1 @@
+In this article we described a possible way to crack encrypted messages by making use of frequency analysis. It is effective if the encryption used is constant, i.e. it always produces the same output for the same input. This was the case of the substitution cipher we used to illustrate a frequency analysis attack in our article.
