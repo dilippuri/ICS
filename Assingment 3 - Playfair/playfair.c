@@ -49,7 +49,7 @@ void generateKey(char key[5][5], char plain_text[]){
 			i++;
 		}
 	}
-	printf("%s\n",K);
+	//printf("%s\n",K);
 	k=0;
     for(int i=0;i<5;i++){
 		for(int j=0;j<5;j++){
@@ -85,7 +85,7 @@ void map(int i,int j,int x,int y,char key[5][5],char cipher_text[],int idx){
 void playfair(char key[5][5],char plain_text[],char cipher_text[]){
 	
 	int n = strlen(plain_text);
-	if(n%2 == 1){
+	if(n%2 == 1){//padding if length of plain text is odd
 		plain_text[n] = 'X';
 		plain_text[n+1] = '\0';
 	}
@@ -120,15 +120,16 @@ void playfair(char key[5][5],char plain_text[],char cipher_text[]){
 
 int main(){
 	char plain_text[1000];
-	printf("Enter plain text\n");
-	scanf("%[^\n]",plain_text);
-	removeSpaces(plain_text);
-	toUpper(plain_text);
+	FILE *fp,*fs;
+	fp = fopen("plaintext.txt","r");
+	fscanf(fp,"%[^\n]",plain_text);
+	removeSpaces(plain_text);//just removes spaces
+	toUpper(plain_text);//converts text to uppercase
 	printf("%s\n",plain_text);
 	
 	char key[5][5];
 	
-	generateKey(key, plain_text);
+	generateKey(key, plain_text);//generate 5x5 key
 	
 	printf("Key :\n");
 	for(int i=0;i<5;i++){
@@ -143,9 +144,8 @@ int main(){
 	playfair(key, plain_text, cipher_text);
 	
 	printf("%s\n",cipher_text);
-	printf("%s",key);
+	//printf("%s",key);
 	
-	FILE *fp,*fs;
 	fp = fopen("ciphertext.txt","w");
 	fprintf(fp,"%s",cipher_text);
 	fclose(fp);

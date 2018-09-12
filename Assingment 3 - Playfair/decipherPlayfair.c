@@ -4,8 +4,6 @@
 #include<stdbool.h>
 
 void revMap(int i,int j,int x,int y,char key[5][5],char plain_text[],int idx){
-	printf("i=%d, j=%d\nx=%d y=%d\n",i,j,x,y);
-	printf("idx = %d\n",idx);
 	if(j == y){
 			((i-1) % 5 > -1) ? (i = (i-1) % 5) : (i = (i+4) % 5);
 		    ((x-1) % 5 > -1) ? (x = (x-1) % 5) : (x = (x+4) % 5);
@@ -21,25 +19,17 @@ void revMap(int i,int j,int x,int y,char key[5][5],char plain_text[],int idx){
 		j = y;
 		y = temp;
 	}
-	printf("i=%d, j=%d\nx=%d y=%d\n",i,j,x,y);
 	plain_text[idx] = key[i][j];
 	plain_text[idx+1] = key[x][y];
-	printf("%c  %c\n",key[i][j],key[x][y]);
 }
 
 void decipher(char key[5][5],char cipher_text[]){
 	char plain_text[1000];
 	int n = strlen(cipher_text);
-	if(n%2 == 1)
-		cipher_text[n] = 'X';
-	n = strlen(cipher_text);
-	
 	int c_i;
 	for(c_i=0;c_i<n;c_i+=2){
 		int x1 = 0,y1 = 0,x2 = 0,y2 = 0;
 	    bool mod1 = false,mod2 = false;
-		printf("%c\n",cipher_text[c_i]);
-		printf("%c\n",cipher_text[c_i + 1]);
 		for(int i=0;i<5;i++){
 			for(int j=0;j<5;j++){
 				if(cipher_text[c_i] == key[i][j]){
@@ -79,7 +69,7 @@ int main(){
 	fclose(fp);
 	
 	printf("%s\n",cipher_text);
-	printf("%s\n",key);
+	//printf("%s\n",key);
 	
 	char keyMatrix[5][5];
 	
