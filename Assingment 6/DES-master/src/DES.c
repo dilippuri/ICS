@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include <stdint.h>
 
-#include "DES.h"
+#include "Des.h"
 
 //////////////////////////////////////////////////////
 //                 GLOBAL VARIABLES                //

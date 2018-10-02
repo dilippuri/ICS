@@ -4,7 +4,8 @@
 //     - Jacques Monin, jacques.monin@u-bordeaux.fr
 //     - Hugo Bonnin, hugo.bonnin@u-bordeaux.fr
 //
-
+#include<stdint.h>
+#include<stdbool.h>
 #ifndef DES_H
 #define DES_H
 
